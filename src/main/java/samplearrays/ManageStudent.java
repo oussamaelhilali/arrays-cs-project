@@ -2,6 +2,7 @@ package samplearrays;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.SplittableRandom;
 
 public class ManageStudent {
 
@@ -115,6 +116,33 @@ public class ManageStudent {
         return newArr;
     }
 
+    public static void School2D() {
+        System.out.println("\n== 2D School Array Example ===");
+        Student[][] school = new Student[2][3];
+
+        school[0][0] = new Student(101, "Karim", 18, 13);
+        school[0][1] = new Student(102, "Sara", 19, 17);
+        school[0][2] = new Student(103, "Omar", 18, 14);
+
+        school[1][0] = new Student(201, "Lina", 17, 19);
+        school[1][1] = new Student(202, "Mehdi", 18, 12);
+        school[1][2] = new Student(203, "Yassine", 19, 15);
+
+        // Print names of all students class by class and find the top student in each class
+        for (int i = 0; i < school.length; i++) {
+            System.out.println("Class " + (i + 1) + ":");
+            Student topStudent = school[i][0];
+
+            for (int j = 0; j < school[i].length; j++) {
+                System.out.println("  -> " + school[i][j]);
+                if (school[i][j].getGrade() > topStudent.getGrade()) {
+                    topStudent = school[i][j];
+                }
+            }
+            System.out.println("   [Top Student of Class " + (i + 1) + ": " + topStudent.getName() + " with grade " + topStudent.getGrade() + "]\n");
+        }
+    }
+
     // 1) Create an Array of Students + demos for all tasks
     public static void main(String[] args) {
         // Create & initialize array of 5 students
@@ -172,6 +200,8 @@ public class ManageStudent {
         arr = appendStudent(arr, new Student(6, "Adam", 22, 16));
         System.out.println("\n== Array after appending a new student ==");
         for (Student s : arr) System.out.println(s);
+
+        School2D();
     }
 }
 
